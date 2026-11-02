@@ -60,6 +60,10 @@ uv run pytest -m browser               # tests that need Chromium
 uv run ruff check && uv run ruff format --check
 ```
 
+## Credits
+
+url2md was built with the help of [Claude](https://claude.ai), Anthropic's AI assistant.
+
 ## License
 
 [MIT](LICENSE)
