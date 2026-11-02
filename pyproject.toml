@@ -1,0 +1,39 @@
+[project]
+name = "url2md"
+version = "0.1.0"
+description = "Convert a web page to Markdown, with optional JavaScript rendering"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Julien Seren-Rosso" }]
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.12",
+    "markitdown>=0.1.9",
+    "playwright>=1.64",
+    "requests>=2.32",
+]
+
+[project.urls]
+Repository = "https://github.com/kornifex/url2md"
+
+[project.scripts]
+url2md = "url2md.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.14"]
+
+[build-system]
+requires = ["uv_build>=0.13.5,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+# Browser tests need Playwright's Chromium: run them with `pytest -m browser`
+addopts = "-m 'not browser'"
+markers = ["browser: renders pages in headless Chromium"]
